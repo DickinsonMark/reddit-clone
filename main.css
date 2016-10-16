@@ -1,3 +1,29 @@
 body {
   background-color: beige;
 }
+
+.has-error {
+  color: red;
+  border: 1px solid red;
+}
+
+img {
+  width: 200px;
+  height: 300px;
+}
+
+.votes {
+  font-size: 2rem;
+}
+
+.overZero {
+  color: green;
+}
+
+.overZero::before {
+  content: '+';
+}
+
+.underZero {
+  color: red;
+}

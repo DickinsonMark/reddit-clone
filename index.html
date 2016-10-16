@@ -3,11 +3,97 @@
   <head>
     <meta charset="utf-8">
     <title>Reddit Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="main.css" media="screen" title="no title">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
   </head>
   <body>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+
+    <!-- Nav bar -->
+    <nav class="nav-wrapper teal">
+      <a href="#" class="brand-logo">Reddit Clone</a>
+      <ul class="right">
+        <li>
+          <a class="waves-effect waves-light modal-trigger" href="#modal1">
+            <i class="material-icons left">message</i>
+            New Post</a>
+        </li>
+        <li class="waves-effect waves-light">
+          <input type="text" ng-model="searchText" placeholder="Search">
+        </li>
+        <li>
+          <a class="waves-effect waves-light dropdown-button" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="container" ng-controller="postController as postCntl">
+      <section>
+        <div class="col s12" ng-repeat="post in posts | orderBy : sortBy : reverse | filter : searchText">
+          <div class="card horizontal">
+            <div class="card-image">
+              <img ng-src="{{post.image}}">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <span class="card-title">{{post.title}}</span>
+                <span>Posted by {{post.author}}</span>
+                <p>{{post.description}}</p>
+              </div>
+              <div class="card-action">
+                <a ng-click="postCntl.changeVotes(-1, post)"><i class="small material-icons">thumb_down</i></a>
+                  <span class="votes" ng-class="{overZero: post.votes > 0, underZero: post.votes < 0}">{{post.votes}}</span>
+                <a ng-click="postCntl.changeVotes(1, post)"><i  class="small material-icons">thumb_up</i></a>
+                <span>{{post.time | date}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Add a new Post modal -->
+    <div id="modal1" class="modal modal-fixed-footer">
+      <form name="newPost" ng-controller="newPostController as newPostCntl">
+        <div class="modal-content">
+          <label for="title" ng-class="{ 'has-error' : newPost.title.$invalid && newPost.title.$dirty}">Title {{newPost.title.$invalid}}
+            <input id="title" type="text" ng-model="form.title" ng-class="{ 'has-error' : newPost.title.$invalid && newPost.title.$dirty}" required>
+          </label>
+
+          <label for="author" ng-class="{ 'has-error' : newPost.title.$invalid && newPost.title.$dirty}">Author
+            <input id="author" type="text" ng-model="form.author" ng-class="{ 'has-error' : newPost.author.$invalid && newPost.author.$dirty}" required>
+          </label>
+
+          <label for="image" ng-class="{ 'has-error' : newPost.title.$invalid && newPost.title.$dirty}">Image url
+            <input id="image" type="url" ng-model="form.image" ng-class="{ 'has-error' : newPost.image.$invalid && newPost.image.$dirty}" required>
+          </label>
+
+          <label for="description" ng-class="{ 'has-error' : newPost.title.$invalid && newPost.title.$dirty}">Description
+            <textarea id="description" ng-model="form.description" ng-class="{ 'has-error' : newPost.description.$invalid && newPost.description.$dirty}" required rows="8" cols="40"></textarea>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button class="waves-effect waves-green btn-flat" ng-click="newPostCntl.submitForm(form)" ng-disabled="newPost.$invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Drop down search menu -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li class="waves-effect waves-dark teal lighten-3" ng-click="sortBy = 'votes'; reverse = false">Lowest votes first</li>
+      <li class="waves-effect waves-dark teal lighten-3" ng-click="sortBy = 'votes'; reverse = true">Highest votes first</li>
+      <li class="waves-effect waves-dark teal lighten-3" ng-click="sortBy = 'title'; reverse = false">Title A-Z</li>
+      <li class="waves-effect waves-dark teal lighten-3" ng-click="sortBy = 'title'; reverse = true">Title Z-A</li>
+      <li class="waves-effect waves-dark teal lighten-3" ng-click="sortBy = 'time'; reverse = false">Date oldest first</li>
+      <li class="waves-effect waves-dark teal lighten-3" ng-click="sortBy = 'time'; reverse = true">Date newest first</li>
+    </ul>
+
+    <!-- JavaScript files -->
+    <script src="modal.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
     <script src="controllers.js" charset="utf-8"></script>
   </body>
