@@ -13,7 +13,7 @@ img {
 }
 
 .votes {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .overZero {
@@ -26,4 +26,19 @@ img {
 
 .underZero {
   color: red;
+}
+
+.plural::after {
+  content: 's';
+}
+
+/* valid color */
+.input-field input.valid {
+  border-bottom: 1px solid green;
+  box-shadow: 0 1px 0 0 green;
+}
+/* invalid color */
+.input-field input.invalid {
+  border-bottom: 1px solid red;
+  box-shadow: 0 1px 0 0 red;
 }

@@ -1,5 +1,5 @@
 (function() {
   'use strict';
 
-  angular.module('redditApp', []);
+  angular.module('redditApp', ['angularMoment']);
 }());
