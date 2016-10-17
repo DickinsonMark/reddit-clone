@@ -12,6 +12,10 @@ img {
   height: 300px;
 }
 
+.card {
+  min-width: 1008px;
+}
+
 .votes {
   font-size: 1.5rem;
 }
@@ -41,25 +45,4 @@ img {
 .input-field input.invalid {
   border-bottom: 1px solid red;
   box-shadow: 0 1px 0 0 red;
-}
-
-.animate-show,
-.animate-hide {
-  -webkit-transition:all linear 1s;
-  -moz-transition:all linear 1s;
-  -ms-transition:all linear 1s;
-  -o-transition:all linear 1s;
-  transition:all linear 1s;
-}
-
-.animate-show.ng-hide-remove,
-.animate-hide.ng-hide-add.ng-hide-add-active {
-  opacity: 0;
-  display: block !important;
-}
-
-.animate-hide.ng-hide-add,
-.animate-show.ng-hide-remove.ng-hide-remove-active {
-  opacity: 1;
-  display: block !important;
 }
