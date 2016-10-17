@@ -31,14 +31,17 @@
       $('#modal2').openModal();
     };
     this.submitCommentForm = function(form) {
-      var searchIndex = $rootScope.posts.findIndex(curr => {
-        return curr.id == $rootScope.clicked;
-      });
+      var searchIndex = $rootScope.posts.findIndex(curr => curr.id == $rootScope.clicked);
       console.log(searchIndex);
       console.log($rootScope.posts[searchIndex]);
       $rootScope.posts[searchIndex].comments.push({author: form.author, comment: form.comment});
       $('#modal2').closeModal();
     };
+
+    this.animate = false;
+    this.play = function() {
+      return this.animate = !this.animate;
+    }
 
     this.changeVotes = function(vote, post) {
       return post.votes += vote;
