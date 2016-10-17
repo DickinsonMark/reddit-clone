@@ -38,11 +38,6 @@
       $('#modal2').closeModal();
     };
 
-    this.animate = false;
-    this.play = function() {
-      return this.animate = !this.animate;
-    }
-
     this.changeVotes = function(vote, post) {
       return post.votes += vote;
     };
