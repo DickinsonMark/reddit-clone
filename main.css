@@ -8,12 +8,15 @@ body {
 }
 
 img {
-  width: 200px;
-  height: 300px;
+  max-width: 200px;
+  min-width: 200px;
+  max-height: 300px;
+  min-height: 300px;
 }
 
 .card {
   min-width: 1008px;
+  max-width: 1008px;
 }
 
 .votes {
@@ -37,12 +40,20 @@ img {
 }
 
 /* valid color */
-.input-field input.valid {
+.valid {
   border-bottom: 1px solid green;
   box-shadow: 0 1px 0 0 green;
 }
 /* invalid color */
-.input-field input.invalid {
+.invalid {
   border-bottom: 1px solid red;
   box-shadow: 0 1px 0 0 red;
+}
+
+.validLabel {
+  color: green !important;
+}
+
+.invalidLabel {
+  color: red !important;
 }

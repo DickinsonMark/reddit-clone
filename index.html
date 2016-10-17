@@ -73,23 +73,23 @@
       <form name="newPost" ng-controller="newPostController as newPostCntl">
         <div class="modal-content">
           <div class="input-field">
-            <input id="title" type="text" ng-model="form.title" ng-class="{ 'has-error' : newPost.title.$invalid && newPost.title.$dirty}" required>
-            <label for="title" ng-class="{ 'has-error' : newPost.title.$invalid && newPost.title.$dirty}">Title</label>
+            <input id="title" type="text" name="title" ng-model="form.title" ng-class="{ 'invalid' : newPost.title.$invalid && newPost.title.$dirty, 'valid': newPost.title.$valid}" required>
+            <label for="title" ng-class="{ 'invalidLabel' : newPost.title.$invalid && newPost.title.$dirty, 'validLabel': newPost.title.$valid}">Title</label>
           </div>
 
           <div class="input-field">
-            <input id="author" type="text" ng-model="form.author" ng-class="{ 'has-error' : newPost.author.$invalid && newPost.author.$dirty}" required>
-            <label for="author" ng-class="{ 'has-error' : newPost.title.$invalid && newPost.title.$dirty}">Author</label>
+            <input id="author" type="text" name="author" ng-model="form.author" ng-class="{ 'invalid' : newPost.author.$invalid && newPost.author.$dirty, 'valid': newPost.author.$valid}" required>
+            <label for="author" ng-class="{ 'invalidLabel' : newPost.author.$invalid && newPost.author.$dirty, 'validLabel': newPost.author.$valid}">Author</label>
           </div>
 
           <div class="input-field">
-            <input id="image" type="url" ng-model="form.image" ng-class="{ 'has-error' : newPost.image.$invalid && newPost.image.$dirty}" required>
-            <label for="image" ng-class="{ 'has-error' : newPost.title.$invalid && newPost.title.$dirty}">Image url</label>
+            <input id="image" type="url" name="image" ng-model="form.image" ng-class="{ 'invalid' : newPost.image.$invalid && newPost.image.$dirty, 'valid': newPost.image.$valid}" required>
+            <label for="image" ng-class="{ 'invalidLabel' : newPost.image.$invalid && newPost.image.$dirty, 'validLabel': newPost.image.$valid}">Image url</label>
           </div>
 
           <div class="input-field">
-            <textarea id="description" class="materialize-textarea" ng-model="form.description" ng-class="{ 'has-error' : newPost.description.$invalid && newPost.description.$dirty}" required></textarea>
-            <label for="description" ng-class="{ 'has-error' : newPost.title.$invalid && newPost.title.$dirty}">Description</label>
+            <textarea id="description" name="description" class="materialize-textarea" ng-model="form.description" ng-class="{ 'invalid' : newPost.description.$invalid && newPost.description.$dirty, 'valid': newPost.description.$valid}" required></textarea>
+            <label for="description" ng-class="{ 'invalidLabel' : newPost.description.$invalid && newPost.description.$dirty, 'validLabel': newPost.description.$valid}">Description</label>
           </div>
         </div>
         <div class="modal-footer">
@@ -104,13 +104,13 @@
         <div class="modal-content">
 
           <div class="input-field">
-            <input id="name" type="text" ng-model="commentForm.author" ng-class="{ 'has-error' : newComment.name.$invalid && newComment.name.$dirty}" required>
-            <label for="name" ng-class="{ 'has-error' : newComment.name.$invalid && newComment.name.$dirty}">Name</label>
+            <input id="name" type="text" name="name" ng-model="commentForm.author" ng-class="{ 'invalid' : newComment.name.$invalid && newComment.name.$dirty, 'valid': newComment.name.$valid}" required>
+            <label for="name" ng-class="{ 'invalidLabel' : newComment.name.$invalid && newComment.name.$dirty, 'validLabel': newComment.name.$valid}">Name</label>
           </div>
 
           <div class="input-field">
-            <input id="comment" type="text" ng-model="commentForm.comment" ng-class="{ 'has-error' : newComment.comment.$invalid && newComment.comment.$dirty}" required>
-            <label for="comment" ng-class="{ 'has-error' : newComment.comment.$invalid && newComment.comment.$dirty}">Comment</label>
+            <input id="comment" type="text" name="comment" ng-model="commentForm.comment" ng-class="{ 'invalid' : newComment.comment.$invalid && newComment.comment.$dirty, 'valid': newComment.comment.$valid}" required>
+            <label for="comment" ng-class="{ 'invalidLabel' : newComment.comment.$invalid && newComment.comment.$dirty, 'validLabel': newComment.comment.$valid}">Comment</label>
           </div>
 
         </div>

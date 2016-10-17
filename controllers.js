@@ -21,7 +21,6 @@
       $rootScope.posts.push({id: $rootScope.posts[$rootScope.posts.length - 1].id + 1,title: form.title, author: form.author, image: form.image, description: form.description, votes: 0, time: new Date(), comments: []});
       $('#modal1').closeModal();
     };
-
   });
 
   app.controller('postController', function($scope, $rootScope) {
@@ -32,8 +31,6 @@
     };
     this.submitCommentForm = function(form) {
       var searchIndex = $rootScope.posts.findIndex(curr => curr.id == $rootScope.clicked);
-      console.log(searchIndex);
-      console.log($rootScope.posts[searchIndex]);
       $rootScope.posts[searchIndex].comments.push({author: form.author, comment: form.comment});
       $('#modal2').closeModal();
     };
